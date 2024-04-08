@@ -11,7 +11,10 @@ public class AtmMain {
 		atm.withdrawalAmount = 5000;
 
 		atm.overdraftAmount = 5000;
+		atm.actualPin = 0001;
+		atm.enteredPin = 0002;
 		atm.withdrawMoneyFromAtm();
+		atm.validatePinAndWithdrawMoney();
 
 	}
 }
