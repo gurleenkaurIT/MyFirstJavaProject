@@ -1,10 +1,14 @@
 package loginLoopsAssignment;
 
-/*Write a program which takes username and password from user via console and compares it with a user name and password saved in your class. 
-Saved user id and password are as below:
-username: pivotAdmin
-password:Admin123
- If the username and password entered by user matches with the one saved in your class, then print “You are logged in to the application“ other wise  print “Incorrect User id or password.Try again”.  Also a user gets 3 chances enter the correct user name and password. If the user enters incorrect user name or password more than 3 times then print “ Account locked” 
+/*Write a program which takes username and password from user via console and compares it with a user name and password
+ saved in your class. 
+ Saved user id and password are as below:
+ username: pivotAdmin
+ password:Admin123
+ If the username and password entered by user matches with the one saved in your class, then print 
+ “You are logged in to the application“ other wise  print “Incorrect User id or password.Try again”.  
+ Also a user gets 3 chances enter the correct user name and password.
+ If the user enters incorrect user name or password more than 3 times then print “ Account locked” 
 */
 
 import java.util.Scanner;

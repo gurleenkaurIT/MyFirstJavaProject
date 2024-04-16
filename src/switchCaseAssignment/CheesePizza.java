@@ -30,19 +30,19 @@ public class CheesePizza {
 		System.out.println("Enter the Pizza Size : ");
 		String pizzaSize = sc.next();
 
+		System.out.println("Would You like to add Pepperoni :");
+		pepperoni = sc.next();
+
+		System.out.println("Would You like to add Cheese :");
+		cheese = sc.next();
+
 		switch (pizzaSize) {
 		case "Small":
 			sum = sum + smallPizzaPrice;
 
-			System.out.println("Would You like to add Pepperoni :");
-			pepperoni = sc.next();
-
 			if (pepperoni.equalsIgnoreCase("Yes")) {
 				sum = sum + pepperoniAddedInSmallPizza;
 			}
-			
-			System.out.println("Would You like to add Cheese :");
-			cheese = sc.next();
 
 			if (cheese.equalsIgnoreCase("Yes")) {
 				sum = sum + cheeseAdded;
@@ -53,15 +53,9 @@ public class CheesePizza {
 		case "Medium":
 			sum = sum + mediumPizzaPrice;
 
-			System.out.println("Would You like to add Pepperoni :");
-			pepperoni = sc.next();
-
 			if (pepperoni.equalsIgnoreCase("Yes")) {
 				sum = sum + pepperoniAdded;
 			}
-
-			System.out.println("Would You like to add Cheese :");
-			cheese = sc.next();
 
 			if (cheese.equalsIgnoreCase("Yes")) {
 				sum = sum + cheeseAdded;
@@ -72,15 +66,9 @@ public class CheesePizza {
 		case "Large":
 			sum = sum + largePizzaPrice;
 
-			System.out.println("Would You like to add Pepperoni :");
-			pepperoni = sc.next();
-
 			if (pepperoni.equalsIgnoreCase("Yes")) {
 				sum = sum + pepperoniAdded;
 			}
-
-			System.out.println("Would You like to add Cheese :");
-			cheese = sc.next();
 
 			if (cheese.equalsIgnoreCase("Yes")) {
 				sum = sum + cheeseAdded;
@@ -92,7 +80,7 @@ public class CheesePizza {
 			System.out.println("Please enter valid pizza size");
 			break;
 		}
-		
+
 		System.out.println("Youe final pizza Bill is : $" + sum);
 	}
 
