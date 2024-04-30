@@ -24,12 +24,7 @@ Take all inputs through scanner Only.
  * */
 public class Banquet {
 
-	double bookingBaseCost;
-	double costOfFood;
-	double costOfBverages;
-	double taxOnFood;
-	double taxOnBeverages;
-	double tip;
+	
 	double totalBaseCost;
 	double cess;
 

@@ -62,7 +62,7 @@ public class AccountMain {
 //		}
 		
 		
-		boolean isAccountValidated = false;
+		//boolean isAccountValidated = false;
 //		for (int i = 0; i < accounts.length; i++) {
 //
 //			if (accounts[i].validateCredentials(accountNumEntered, pinEntered)) {
@@ -83,7 +83,7 @@ public class AccountMain {
 		rajinderAccount.displayAccountDetails();
 		account.getAccountNumber();
 		
-		
+		sc.close();
 	}
 
 }

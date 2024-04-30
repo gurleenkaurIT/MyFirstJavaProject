@@ -35,6 +35,7 @@ public class BanquetMain {
 		double totalCalcuatedCess = banquet.calculateCess(guestCount, totalBaseCost);
 
 		banquet.calculateTheTotalCost(totalBaseCost, totalCalculatedTax, totalCalcuatedCess);
+		//double cost = banquet.
 	}
 
 }

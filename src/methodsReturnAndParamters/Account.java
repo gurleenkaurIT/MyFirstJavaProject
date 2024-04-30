@@ -44,7 +44,7 @@ public class Account {
 	}
 
 	public Account getAccountIfValidCredentials(String accountNumberEntered, int pinEntered, Account[] accounts) {
-		Account ac = new Account();
+	//	Account ac = new Account();
 		for (int i = 0; i < accounts.length; i++) {
 			if (accounts[i].getAccountNumber().equals(accountNumberEntered)) {
 				if (accounts[i].pin==pinEntered) {
