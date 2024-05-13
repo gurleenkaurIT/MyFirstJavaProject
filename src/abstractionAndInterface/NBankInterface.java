@@ -6,11 +6,12 @@ public interface NBankInterface extends FinancialTransactions{
 	String name = "NationalBank";
 	
 	
-//	public void interestonSaving();
-//
-//	public void provideCheques();
-//
-//	public void provideLoans();
+	public void interestonSaving();
+
+	public void provideCheques();
+
+	public void provideLoans();
+	
 	public default void method1() {
 		System.out.println("Inside default ");
 	}

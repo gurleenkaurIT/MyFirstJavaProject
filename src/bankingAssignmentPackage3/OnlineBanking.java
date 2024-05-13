@@ -2,98 +2,114 @@ package bankingAssignmentPackage3;
 
 import java.util.Scanner;
 
+import bankingAssignmentPackage1.Person;
+
 public class OnlineBanking extends BankingRules implements BankOperations {
 	Person details;
 
 	Scanner sc = new Scanner(System.in);
 
-	private int noOfTransactionsAllowed;
-	private int noOfTransactionsAvailable = 0;
+	private static int noOfTransactionsAllowed;
+	private int noOfTransactionsAvailable = 1;
 	private boolean isPasswordCorrect = false;
-	private double amountWithdrawn;
-	private double dailyWithdrawalLimit;
-	double remainingWithdrawalLimit;
+	private static double dailyWithdrawalLimit;
+	private double remainingWithdrawalLimit;
+	private int numberOfWithdraw = 1;
+
 
 	public void selectOption() {
-		System.out.println("Would you like to : " + '\n' + "1. continue" + '\n' + "2. exit");
+		System.out.println("Would you like to :\n 1. continue \n 2. exit");
 		int option = sc.nextInt();
-		if (option == 1) {
-			System.out.println("Would you like to: " + '\n' + "1. View Balance" + '\n' + "2. Perform transaction");
-			int balOrTransaction = sc.nextInt();
-			if (balOrTransaction == 1) {
-				viewBalance();
-				selectOption();
-			} else if (balOrTransaction == 2) {
+		switch (option) {
+		case 1:
+			System.out.println("Would you like to: \n 1. Perform transaction \n 2. View Balance");
+			int balanceOrTransaction = sc.nextInt();
+			switch (balanceOrTransaction) {
+			case 1:
 				if (noOfTransactionsAllowed()) {
-					System.out.println(
-							"Would you like to: " + '\n' + "1. Deposit amount" + '\n' + "2. Withdraw amount: ");
+					System.out.println("1. Deposit \n2.Withdraw");
 					int depositOrWithdraw = sc.nextInt();
-					if (depositOrWithdraw == 1) {
+					switch (depositOrWithdraw) {
+					case 1:
 						depositAmount();
+						break;
 
-					} else if (depositOrWithdraw == 2) {
+					case 2:
 						withdrawAmount();
-					} else {
-						System.out.println("Please enter valid option");
+						break;
+
+					default:
+						System.out.println("Invalid Input");
+						break;
 					}
 				} else {
 					System.out.println("You have recahed maximum number of transactions");
 				}
-			} else {
-				System.out.println("Please enter valid option");
+				break;
+
+			case 2:
+				viewBalance();
+				selectOption();
+				break;
+
+			default:
+				System.out.println("Invalid Input");
+				break;
 			}
-		} else if (option == 2) {
+			break;
+
+		case 2:
 			System.out.println("Exiting........");
 			System.exit(0);
+			break;
 
-		} else {
+		default:
 			System.out.println("Invalid Input");
+			break;
 		}
 
 	}
 
 	@Override
 	public void withdrawAmount() {
-		
-			System.out.println("Enter withdraw amount: ");
-			double amountWithdraw = sc.nextDouble();
-			if (details.getFundsAvailable() > 0) {
-				if ((details.getFundsAvailable() >= amountWithdraw)) {
-					if (dailyWithdarwalLimit() > amountWithdraw) {
-						remainingWithdrawalLimit = dailyWithdrawalLimit - amountWithdrawn;
+		System.out.println("Enter withdraw amount: ");
+		double amountWithdraw = sc.nextDouble();
+		if (amountWithdraw > 0) {
+			if (details.getFundsAvailable() > 0 && details.getFundsAvailable() >= amountWithdraw) {
+					if (dailyWithdarwalLimit() >= amountWithdraw) {
+						remainingWithdrawalLimit = dailyWithdrawalLimit - amountWithdraw;
 						double fundsInitially = details.getFundsAvailable();
 						double fundsAfterInterac = fundsInitially - amountWithdraw;
 						details.setFundsAvailable(fundsAfterInterac);
 						System.out.println("Amount Withdrawn");
-						noOfTransactionsAvailable++;
 						viewBalance();
-
 					} else {
-						System.out.println("You have reached maximum Limit");
+						System.out.println("You have reached maximum withdrawal Limit");
 					}
-
-				} else {
-					System.out.println("Withdrawn amount should be less than the Funds available");
-				}
 			} else {
 				System.out.println("Sorry! Insufficent Funds");
 			}
-			selectOption();
+		} else {
+			System.out.println("Amount withdrawn can't be zero");
+		}
+		selectOption();
 	}
 
 	@Override
 	public void depositAmount() {
-
 		System.out.println("Enter deposit amount: ");
 		double amountDeposited = sc.nextDouble();
-
+		if (amountDeposited > 0) {
 		double fundsInitially = details.getFundsAvailable();
 		double fundsAfterDeposit = amountDeposited + fundsInitially;
 		details.setFundsAvailable(fundsAfterDeposit);
 		System.out.println("Amount Deposited");
 		viewBalance();
 		selectOption();
-
+		} else {
+			System.out.println("Amount deposited can't be zero");
+		}
+		selectOption();
 	}
 
 	public boolean validatePassword() {
@@ -123,6 +139,7 @@ public class OnlineBanking extends BankingRules implements BankOperations {
 		if (details.getAccountNumber().equals(accountNumberEntered)) {
 			return true;
 		}
+		System.out.println("Account Number is Incorrect");
 		return false;
 	}
 
@@ -134,24 +151,43 @@ public class OnlineBanking extends BankingRules implements BankOperations {
 
 	@Override
 	public double dailyWithdarwalLimit() {
-		if (remainingWithdrawalLimit != 0) {
-			dailyWithdrawalLimit = remainingWithdrawalLimit;
-			return dailyWithdrawalLimit;
-		} else {
+		if (numberOfWithdraw == 1) {
 			dailyWithdrawalLimit = 2000;
-			return dailyWithdrawalLimit;
+			numberOfWithdraw++;
+		} else if (numberOfWithdraw > 1) {
+			dailyWithdrawalLimit = remainingWithdrawalLimit;
 		}
+		return dailyWithdrawalLimit;
 	}
 
 	@Override
 	public boolean noOfTransactionsAllowed() {
-		noOfTransactionsAllowed = 3;
+		noOfTransactionsAllowed = 5;
 		if (noOfTransactionsAvailable <= noOfTransactionsAllowed) {
 			noOfTransactionsAvailable++;
 			return true;
 		}
 		return false;
 
+	}
+
+	@Override
+	public void changePinPassword() {
+		System.out.println("Enter new Password");
+		String newPassword = sc.next();
+		if (!newPassword.equals(details.getPassword())) {
+			if (!newPassword.contains("&") && !newPassword.contains("$") && !newPassword.contains("@")
+					&& newPassword.length() >= 8 && (!newPassword.isEmpty())) {
+				details.setPassword(newPassword);
+				System.out.println("Password Updated");
+
+			} else {
+				System.out.println(
+						"Password should contain 8 or more characters and must not contain &, $ and @ characters.");
+			}
+		} else {
+			System.out.println("New password cannot be same as old password");
+		}
 	}
 
 }

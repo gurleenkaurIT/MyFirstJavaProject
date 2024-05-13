@@ -2,36 +2,40 @@ package bankingAssignmentPackage3;
 
 import java.util.Scanner;
 
+import bankingAssignmentPackage1.Person;
+
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		ATM atm = new ATM();
-		atm.details = new Person();
+		ATM atm;
+		OnlineBanking onlineBanking;
 
-		OnlineBanking onlineBanking = new OnlineBanking();
-		onlineBanking.details = new Person();
-
-		System.out.println("Please enter the Banking service you want:" + '\n' + "1. ATM" + '\n' + "2. Online");
+		System.out.println("Please enter the Banking service you want: \n 1. ATM \n 2. Online");
 		int bankingType = sc.nextInt();
-
-		if (bankingType == 1) {
+		switch (bankingType) {
+		case 1:
+			atm = new ATM();
+			atm.details = new Person(10000, 1234);
 			if (atm.validatePin()) {
 				atm.selectOption();
 			}
+			break;
 
-		} else if (bankingType == 2) {
-			if (onlineBanking.validateAccountNumber()) {
-				if (onlineBanking.validatePassword()) {
-					onlineBanking.selectOption();
-				}
+		case 2:
+			onlineBanking = new OnlineBanking();
+			onlineBanking.details = new Person(10000, "123456", "Gur123");
+
+			if (onlineBanking.validateAccountNumber() && onlineBanking.validatePassword()) {
+				onlineBanking.selectOption();
 			}
-		} else {
+			break;
+
+		default:
 			System.out.println("Invalid Input");
+			break;
 		}
-
 		sc.close();
-
 	}
 }

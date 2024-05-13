@@ -51,6 +51,9 @@ public class BankMain {
 		
 		
 		FinancialTransactions rbc4 = new RBC();
+		//FinancialTransactions rbc4 = new FinancialTransactions() ;// can't create object of the interface
+		
+		
 		
 		rbc4.interestonSaving();
 		rbc4.linkAccountToSIN();

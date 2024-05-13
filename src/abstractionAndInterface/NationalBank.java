@@ -12,7 +12,7 @@ public abstract class NationalBank {
 	}
 	
 	//An abstract method does not have a body (curly braces {}) and ends in a semicolon and abstract keyword is appened to it
-	public abstract void interestonSaving();
+	public abstract  void interestonSaving();
 	
 	public abstract void provideCheques();
 	

@@ -1,28 +1,21 @@
 package bankingAssignmentPackage2;
 
+import bankingAssignmentPackage1.Person;
+
 public abstract class BankOperations {
 
 	Person details;
 
-	public abstract void changePinPassword(int newPin);
+	public abstract void changePinPassword();
 
-	public abstract void changePinPassword(String newPassword);
-
-	boolean validatePin(int pinEntered) {
-		if (pinEntered != details.getPin()) {
-			System.out.println("PIN is Incorrect. Please start over.");
-			System.exit(0);
-		}
-		return true;
+	public void withdrawAmount(double amountWithdrawn) {
 	}
 
-	boolean validateAccountNumberAndPassword(String accountNumberEntered, String passwordEntered) {
-		if (details.getAccountNumber().equals(accountNumberEntered) && details.getPassword().equals(passwordEntered)) {
-			return true;
-		}
-		System.out.println("Account Number or Password is Incorrect. Please start over.");
-		System.exit(0);
-		return false;
+	public void depositAmount(double amountDeposited) {
+	}
+
+	public final void viewBalance() {
+		System.out.println("Balance is : " + details.getFundsAvailable());
 	}
 
 }
