@@ -10,13 +10,15 @@ public class ATM extends BankingRules implements BankOperations {
 	Scanner sc = new Scanner(System.in);
 
 	private static int noOfTransactionsAllowed;
-	private int noOfTransactionsAvailable = 1;
+	private static int noOfTransactionsAvailable = 1;
 	private boolean isPinCorrect = false;
 	private static double dailyWithdrawalLimit;
 	private double remainingWithdrawalLimit;
-	private int numberOfWithdraw = 1;
+	private static int numberOfWithdraw = 1;
 
-	public void selectOption() {
+	public
+	
+	void selectOption() {
 		System.out.println("Would you like to :\n 1. continue \n 2. exit");
 		int option = sc.nextInt();
 		switch (option) {
@@ -134,7 +136,7 @@ public class ATM extends BankingRules implements BankOperations {
 	}
 
 	@Override
-	public void viewBalance() {
+	public final void viewBalance() {
 		System.out.println("Balance is : " + details.getFundsAvailable());
 
 	}

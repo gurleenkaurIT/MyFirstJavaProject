@@ -1,4 +1,4 @@
-package finalPractice;
+package finalKeywordPractice;
 
 public class mainClass {
 
