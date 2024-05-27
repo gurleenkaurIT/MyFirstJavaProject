@@ -12,6 +12,9 @@ class FourWheeler extends Vehicle {
 	@Override
 	public void warranty() {
 		System.out.println("Give two Years Warranty");
+	}
+		public void newChildMethod() {
+		}
+	
 		
 	}
-}

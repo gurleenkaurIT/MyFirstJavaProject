@@ -1,40 +1,38 @@
 package schoolManagementSystem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SchoolClass {
 
 	public static final String name = "Springfield High School";
 
-	private ArrayList<String> teachers = new ArrayList<String>();
-	private ArrayList<String> students = new ArrayList<String>();
+	private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+	private ArrayList<Student> students = new ArrayList<Student>();
+	private ArrayList<String[]> courses = new ArrayList<String[]>();
 
 	Teacher teacher;
 	Student student;
 
-	public SchoolClass(ArrayList<String> teachers, ArrayList<String> students, Teacher teacher, Student student) {
-		super();
-		this.teachers = teachers;
-		this.students = students;
-		this.teacher = teacher;
-		this.student = student;
+	public void addTeachers(Teacher teacher) {
+		this.teachers.add(teacher);
 	}
 
-	public SchoolClass(ArrayList<String> teachers, ArrayList<String> students) {
-		super();
-		this.teachers = teachers;
-		this.students = students;
+	public void addStudents(Student student) {
+		this.students.add(student);
 	}
-	
-	public SchoolClass() {
+
+	public void addCourses(String[] courseTaught) {
+		courses.add(courseTaught);
 	}
-	
-	public void addTeachers(String teacher) {
-		teachers.add(teacher);
+
+	public boolean isStudentPresent(String studentIdEntered) {
+		for (Student list : students) {
+			if (studentIdEntered.equalsIgnoreCase(list.getStudentID())) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
-	public void addStudents(String student) {
-		students.add(student);
-	}
-	
+
 }

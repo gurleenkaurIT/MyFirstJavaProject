@@ -25,7 +25,7 @@ public class Student extends Person {
 
 	@Override
 	public void describeRole() {
-		System.out.println("Student");
+		System.out.println(getName() + " is a Student");
 	}
 
 	public String determineStream(double percentage) {
@@ -52,7 +52,12 @@ public class Student extends Person {
 	public void rateTeacher(Teacher teacher, int rating) {
 		teacher.addRating(rating);
 	}
-	
-	
+
+//	public boolean isStudentPresent(String studentIdEntered) {
+//		if (studentIdEntered.equals(studentID)) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 }

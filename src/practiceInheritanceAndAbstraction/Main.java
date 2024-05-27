@@ -11,15 +11,19 @@ public class Main {
 		FourWheeler car = new FourWheeler();
 		car.showPrice(); // Executed Vehicle class method
 		car.finalPrice(); // Executed Four Wheeler method
+		car.newChildMethod();
 
 		Vehicle twoWheeler = new TwoWheeler();
 		twoWheeler.showPrice(); // Executed Two Wheeler method
 		twoWheeler.warranty();
+		twoWheeler.newMthod();
+		
 
 		//fourWheeler is referring to object of TD bank
 		Vehicle fourWheeler = new FourWheeler();
 		fourWheeler.showPrice(); // Executed Vehicle class method
 		fourWheeler.warranty();
+	//	fourWheeler.n
 
 	}
 }

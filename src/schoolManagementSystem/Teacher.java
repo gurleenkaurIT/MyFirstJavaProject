@@ -8,33 +8,20 @@ public class Teacher extends Person {
 
 	private String employeeID;
 	private int salary;
-	
-	private Set<String> coursesTaught = new HashSet<String>();
-	private ArrayList<Integer> rating = new ArrayList<Integer>();
+	private ArrayList<Integer> rating;
 
-	public Teacher(String name, int age, String gender, String employeeID, int salary, Set<String> coursesTaught,
-			ArrayList<Integer> rating) {
-		super(name, age, gender);
-		this.employeeID = employeeID;
-		this.salary = salary;
-		this.coursesTaught = coursesTaught;
-		this.rating = rating;
-	}
-	
+	SchoolClass school;
+
 	public Teacher(String name, int age, String gender, String employeeID, int salary) {
 		super(name, age, gender);
 		this.employeeID = employeeID;
 		this.salary = salary;
-	}
-
-	public void addCourses(String courseTaught) {
-		coursesTaught.add(courseTaught);
+		this.rating = new ArrayList<Integer>();
 	}
 
 	@Override
 	public void describeRole() {
-		System.out.println("Teacher");
-
+		System.out.println(getName() + " is a Teacher");
 	}
 
 	public String getEmployeeID() {
@@ -42,7 +29,11 @@ public class Teacher extends Person {
 	}
 
 	public void addRating(int ratings) {
-		rating.add(ratings);
+		if (ratings > 0 && ratings < 6) {
+			rating.add(ratings);
+		} else {
+			System.out.println("Ratings should be from 1 to 5 only");
+		}
 	}
 
 	public double calculateAverageRating() {
@@ -53,7 +44,13 @@ public class Teacher extends Person {
 		double totalRatings = rating.size();
 		double avergeRating = ratingsSum / totalRatings;
 		return avergeRating;
-
+	}
+	
+	public boolean isTeacherPresent(String employeeIdEntered) {
+		if (employeeIdEntered.equals(employeeID)) {
+			return true;
+		}
+		return false;
 	}
 
 }
